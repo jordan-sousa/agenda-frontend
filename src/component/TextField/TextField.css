@@ -1,0 +1,24 @@
+.text_field {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+    justify-content: center;
+}
+
+.text_field label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.text_field input {
+    background-color: #fff;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    box-sizing: border-box;
+}

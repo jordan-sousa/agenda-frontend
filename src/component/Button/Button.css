@@ -1,0 +1,17 @@
+.button_app{
+    background: #2a2a30cb;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 15px;
+    color: #FFF;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    width: 80%;
+}
+
+.button_app:hover {
+    background: #79b73b;
+    color: black;
+}

@@ -17,65 +17,87 @@
     font-size: 18px;
   } */
 
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+}
+
+.contact-item ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.contact-item ul li {
+  margin: 5px 0;
+}
+
+.contact-item ul li img {
+  margin-bottom: -4px;
+}
+
+.contact-item section {
+  width: 100%;
+}
+
+.contact-item div {
+  margin-top: 10px;
+}
+
+.contact-item button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.box_edit_delet {
+  display: flex;
+}
+
+.box_edit_delet .button_delet {
+  background: rgb(125 21 49 / 81%);
+}
+
+.contact-item button:hover {
+  background-color: #45a049;
+}
+
+.input_edit {
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  border: none;
+}
+
+.box_button_edit {
+  display: flex;
+}
+
+.box_button_edit :nth-child(2) {
+  background: rgb(125 21 49 / 81%);
+}
+
+@media only screen and (max-width: 600px) {
   .contact-item {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: flex-start;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    flex-wrap: wrap;
   }
-  
-  .contact-item ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+
+  .contact-item ul li span {
+    font-size: 16px;
   }
-  
-  .contact-item ul li {
-    margin: 5px 0;
-  }
-  
-  .contact-item ul li img{
-    margin-bottom: -4px;
-  }
-  
-  .contact-item section {
-    width: 100%;
-  }
-  
-  .contact-item div {
-    margin-top: 10px;
-  }
-  
+
   .contact-item button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-right: 5px;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%;
+    margin-bottom: 5px;
   }
-  
-  .contact-item button:hover {
-    background-color: #45a049;
-  }
-  
-  @media only screen and (max-width: 600px) {
-    .contact-item {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .contact-item ul li span {
-      font-size: 16px;
-    }
-  
-    .contact-item button {
-      width: 100%;
-      margin-bottom: 5px;
-    }
-  }
-  
+}

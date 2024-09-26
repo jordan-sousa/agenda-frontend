@@ -15,13 +15,13 @@ const ContactItem = ({ contact, onEdit, onDelete }) => {
     });
     const[error, setError] = useState(null);
 
-    useEffect(() => {
-        setEditedContact({
-            name: contact.name || '',
-            email: contact.email || '',
-            phone: contact.phone || ''
-        });
-    }, [contact]);
+    // useEffect(() => {
+    //     setEditedContact({
+    //         name: contact.name || '',
+    //         email: contact.email || '',
+    //         phone: contact.phone || ''
+    //     });
+    // }, [contact]);
 
     const saveEdit = async () => {
         if(!editedContact.name || !editedContact.email || !editedContact.phone) {
@@ -36,7 +36,7 @@ const ContactItem = ({ contact, onEdit, onDelete }) => {
             const response = await fetch(`http://localhost:8080/contacts/${contact.id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'aplication/json',
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(editedContact)
@@ -47,7 +47,8 @@ const ContactItem = ({ contact, onEdit, onDelete }) => {
                 onEdit(contact.id, updatedContact);
                 setIsEditing(false);
             } else{
-                setError('Falhar ao atualizar o contato!');
+                const errorData = await response.json();
+                setError(`Falha ao atualizar o contato: ${errorData.message || 'Erro desconhecido'}`);
             }
         } catch(err) {
             setError('Erro de conexão com o servidor.');

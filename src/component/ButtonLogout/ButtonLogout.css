@@ -1,0 +1,10 @@
+.btn_logout {
+    position: absolute;
+    right: 10px;
+    margin: 7px 0px 0px 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background: rgb(83, 49, 49);
+    color: white;
+}

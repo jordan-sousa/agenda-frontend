@@ -3,28 +3,27 @@ import './ContactItem.css';
 
 const ContactItem = ({ contact, onEdit, onDelete }) => {
 
-    // if(!contact) {
-    //     return <div> Carregando ...</div>;
-    // }
-
+    
     const [isEditing, setIsEditing] = useState(false);
     const [editedContact, setEditedContact] = useState({
         name: contact.name || '',
-        email: contact.email || '',
         phone: contact.phone || ''
     });
     const[error, setError] = useState(null);
+    
+    useEffect(() => {
+        setEditedContact({
+            name: contact.name || '',
+            phone: contact.phone || ''
+        });
+    }, [contact]);
 
-    // useEffect(() => {
-    //     setEditedContact({
-    //         name: contact.name || '',
-    //         email: contact.email || '',
-    //         phone: contact.phone || ''
-    //     });
-    // }, [contact]);
+    if(!contact) {
+        return <div> Carregando ...</div>;
+    }
 
     const saveEdit = async () => {
-        if(!editedContact.name || !editedContact.email || !editedContact.phone) {
+        if(!editedContact.name || !editedContact.phone) {
             setError("Todos os campos devem ser preenchidas");
             return;
         }
@@ -92,18 +91,14 @@ const ContactItem = ({ contact, onEdit, onDelete }) => {
                         value={editedContact.name}
                         onChange={(e) => setEditedContact({ ...editedContact, name: e.target.value })}
                     />
-                    <input
-                        type="email"
-                        className='input_edit'
-                        value={editedContact.email}
-                        onChange={(e) => setEditedContact({ ...editedContact, email: e.target.value })}
-                    />
+
                     <input
                         type="tel"
                         className='input_edit'
                         value={editedContact.phone}
                         onChange={(e) => setEditedContact({ ...editedContact, phone: e.target.value })}
                     />
+
                     <div className='box_button_edit'>
                         <button onClick={saveEdit}>Salvar</button>
                         <button onClick={cancelEdit}>Cancelar</button>

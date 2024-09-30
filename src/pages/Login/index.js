@@ -43,18 +43,18 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 
-                localStorage.setItem('token', data.token); // Salvar o token no localStorage
+                localStorage.setItem('token', data.token);
                 setSuccess('Login realizado com sucesso!');
                 setError(null);
-                navigate("/contacts"); // Redirecionar após login bem-sucedido
+                navigate("/contacts"); 
             } else {
-                const errorData = await response.json(); // Tentar pegar a mensagem de erro
-                setError(errorData.message || 'Erro ao realizar login'); // Exibir erro apropriado
+                const errorData = await response.json();
+                setError(errorData.message || 'Erro ao realizar login'); 
             }
         
         } catch (error) {
             console.error('Erro na requisição', error);
-            setError('Erro de comunicação com o servidor'); // Erro ao conectar com o backend
+            setError('Erro de comunicação com o servidor'); 
         }
     }
 

@@ -11,6 +11,9 @@ const FormContact = () => {
         email: ''
     })
 
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -19,9 +22,35 @@ const FormContact = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("meus dados:", formData);
+        
+        try {
+            const response = await fetch('http://localhost:8080/contacts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if(response.ok) {
+                setSuccess('Contato criado com sucesso!');
+                setError(null);
+                setFormData({
+                    name: '',
+                    phone: '',
+                    email: ''
+                });
+            }else {
+                const errorData = await response.json();
+                setError(errorData.message || 'Erro ao criar contato');
+            }
+        }catch (error) {
+            console.error('Erro ao criar contato:', error);
+            setError('Erro de comunicação com o servidor');
+        }
     }
 
     return (

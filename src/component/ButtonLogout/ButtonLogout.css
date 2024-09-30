@@ -7,4 +7,5 @@
     border: none;
     background: rgb(83, 49, 49);
     color: white;
+    z-index: 500;
 }

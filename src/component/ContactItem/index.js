@@ -3,7 +3,6 @@ import './ContactItem.css';
 
 const ContactItem = ({ contact, onEdit, onDelete }) => {
 
-    
     const [isEditing, setIsEditing] = useState(false);
     const [editedContact, setEditedContact] = useState({
         name: contact.name || '',
@@ -44,6 +43,7 @@ const ContactItem = ({ contact, onEdit, onDelete }) => {
             if(response.ok) {
                 const updatedContact = await response.json();
                 onEdit(contact.id, updatedContact);
+
                 setIsEditing(false);
             } else{
                 const errorData = await response.json();

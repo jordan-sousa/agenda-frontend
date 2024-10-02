@@ -9,7 +9,6 @@ const Login = () => {
         login: '',
         password: ''
     });
-// console.log(formData);
 
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
@@ -43,7 +42,7 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 
-                localStorage.setItem('token', data.token);
+                localStorage.setItem('token', data.token);                
                 setSuccess('Login realizado com sucesso!');
                 setError(null);
                 navigate("/contacts"); 

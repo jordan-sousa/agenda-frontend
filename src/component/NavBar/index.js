@@ -2,13 +2,10 @@ import Menu from '../Menu';
 import './NavBar.css';
 import { useState } from 'react';
 import FormContact from '../FormContact';
-import axios from 'axios';
 
-const NavBar = ({ onChange, value }) => {
+const NavBar = ({ onSearchChange, searchTerm }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [contacts, setContacts] = useState([]);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -18,26 +15,12 @@ const NavBar = ({ onChange, value }) => {
         setIsModalOpen(false);
     }
 
-    const handleSearchChange = async (e) => {
+    const handleInputChange = (e) => {
         const value = e.target.value;
-        const token = localStorage.getItem('token');
-        setSearchTerm(value);
+        onSearchChange(value); 
+    };
 
-        if (value) {
-            try {
-                const response = await axios.get(`http://localhost:8080/contacts/search?keyword=${value}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                    },
-                });
-                setContacts(response.data);
-            } catch (err) {
-                console.error("Erro ao buscar contato:", err);
-            }
-        } else {
-            setContacts([]);
-        }
-    }
+    
 
     return (
         <header className="nav-header">
@@ -51,15 +34,15 @@ const NavBar = ({ onChange, value }) => {
                         className="search" 
                         type="search" 
                         placeholder="Busque aqui" 
-                        value={searchTerm} 
-                        onChange={handleSearchChange}
+                        value={searchTerm}
+                        onChange={handleInputChange}
                     />
                 </li>
 
                 <li className="header-list__item">
-                    <a className='link_create' onClick={openModal}>
+                    <button className='link_create' onClick={openModal}>
                         Criar contato
-                    </a>
+                    </button>
                 </li>
             </ul>
 
@@ -70,16 +53,6 @@ const NavBar = ({ onChange, value }) => {
                         <FormContact />
                     </div>
                 </div>
-            )}
-
-            {contacts.length > 0 && (
-                <ul className='search-results'>
-                    {contacts.map(contact => (
-                        <li key={contact.id} >
-                            {contact.name} - {contact.email}
-                        </li>
-                    ))}
-                </ul>
             )}
         </header>
     )

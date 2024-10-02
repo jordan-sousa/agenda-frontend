@@ -43,7 +43,6 @@ const ContactItem = ({ contact, onEdit, onDelete }) => {
             if(response.ok) {
                 const updatedContact = await response.json();
                 onEdit(contact.id, updatedContact);
-
                 setIsEditing(false);
             } else{
                 const errorData = await response.json();

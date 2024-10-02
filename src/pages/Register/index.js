@@ -3,7 +3,6 @@ import Button from '../../component/Button';
 import TextField from '../../component/TextField';
 import './Register.css'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const Register = () => {
 
@@ -17,10 +16,6 @@ const Register = () => {
     const [success, setSuccess] = useState(null);
 
     const navigate = useNavigate(); 
-
-    // if (this.props.au) {
-    //     return <Navigate to={{ pathname: "/", state: { from: location }}} />;
-    // }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -44,7 +39,6 @@ const Register = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
                 
                 setSuccess('Usuario cadastrado com sucesso!');
                 setError(null);

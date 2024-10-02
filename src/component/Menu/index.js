@@ -20,10 +20,9 @@ const Menu = () => {
             {isOpen && (
                 <div className='menu'>
                     <ul>
-                        <li>Home</li>
+                        <li><a href='/contacts'>Contato</a></li>
                         <li>Sobre</li>
                         <li>Serviços</li>
-                        <li>Contato</li>
                     </ul>
                 </div>
             )}

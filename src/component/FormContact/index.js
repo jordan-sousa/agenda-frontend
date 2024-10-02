@@ -13,7 +13,6 @@ const FormContact = () => {
 
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -89,6 +88,8 @@ const FormContact = () => {
                     placeholder="Digite seu email"
                 />
             </div>
+            {success && <p className="success">{success}</p>}
+            {error && <p className="error">{error}</p>}
             <Button text='Criar contato'/>
         </form>
 

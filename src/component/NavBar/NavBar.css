@@ -1,8 +1,8 @@
 .nav-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
+    justify-content: space-evenly;
+    padding: 20px;
     background-color: #f5f5f5;
 }
 
@@ -17,7 +17,6 @@
 
 .search {
     border: none;
-    border-radius: 20px;
     padding: .7em 1em;
     width: 100%;
     max-width: 48vw;
@@ -32,11 +31,10 @@
 }
 
 .link_create {
-    padding: 8px 10px;
+    padding: 10px;
     background-color: #72a439;
     color: #fff;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
 }
@@ -45,7 +43,6 @@
     background-color: #0056b3;
 }
 
-/* Estilo básico para o modal */
 .modal {
     position: fixed;
     top: 0;
@@ -62,8 +59,7 @@
 .modal-content {
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
-    width: 400px;
+    width: 350px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
 }
@@ -77,3 +73,25 @@
 }
 
 
+@media (min-width: 1024px) {
+    .nav-header {
+        padding: 30px; 
+    }
+
+    .header-list {
+        gap: 30px; 
+    }
+
+    .search {
+        max-width: 40vw;
+    }
+
+    .link_create {
+        padding: 12px;
+    }
+
+    .modal-content {
+        width: 600px; 
+        padding: 40px; 
+    }
+}

@@ -24,12 +24,13 @@ const NavBar = ({ onSearchChange, searchTerm }) => {
 
     return (
         <header className="nav-header">
+            <div>
             <ul className="header-list">
-                <li className="header-list__item">
+                <li className="list__item">
                     <Menu />
                 </li>
 
-                <li className="header-list__item">
+                <li className="list__item">
                     <input 
                         className="search" 
                         type="search" 
@@ -39,7 +40,7 @@ const NavBar = ({ onSearchChange, searchTerm }) => {
                     />
                 </li>
 
-                <li className="header-list__item">
+                <li className="list__item">
                     <button className='link_create' onClick={openModal}>
                         Criar contato
                     </button>
@@ -54,6 +55,7 @@ const NavBar = ({ onSearchChange, searchTerm }) => {
                     </div>
                 </div>
             )}
+            </div>
         </header>
     )
 }

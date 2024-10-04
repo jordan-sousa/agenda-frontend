@@ -8,7 +8,7 @@ const Register = () => {
 
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
+        login: '',
         password: ''
     });
 
@@ -28,31 +28,42 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Dados do form', formData);
-
+    
         try {
-            const response = await fetch('http://localhost:8080/login/register', {
+            const response = await fetch('http://localhost:8080/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             });
+    
+            const contentType = response.headers.get('content-type');
             if (response.ok) {
-                const data = await response.json();
-                
-                setSuccess('Usuario cadastrado com sucesso!');
-                setError(null);
-                navigate("/");
-                console.log('Dados retornado do backend: ', data);
+                if (contentType && contentType.includes('application/json')) {
+                    const data = await response.json();
+                    
+                    setSuccess('Usuário cadastrado com sucesso!');
+                    setError(null);
+                    navigate("/");
+                    console.log('Dados retornados do backend: ', data);
+                } else {
+                    const textData = await response.text();
+                    console.log('Resposta de texto do backend:', textData);
+                    setSuccess('Usuário cadastrado com sucesso!');
+                }
             } else {
-                setError('Erro ao cadastrar usuario')
+                const errorMessage = contentType && contentType.includes('application/json') 
+                    ? await response.json() 
+                    : await response.text();
+                setError(`Erro ao cadastrar usuário: ${errorMessage}`);
             }
         } catch (error) {
-            console.error('Erro na requisiçao', error);
+            console.error('Erro na requisição', error);
             setError('Erro com o servidor');
         }
-
     }
+    
 
     return (
         <form onSubmit={handleSubmit} className='form_register'>
@@ -69,9 +80,9 @@ const Register = () => {
             <TextField
                 type='email'
                 placeholder="Digite seu email"
-                name="email"
+                name="login"
                 onChange={handleChange}
-                value={formData.email}
+                value={formData.login}
             />
 
             <TextField

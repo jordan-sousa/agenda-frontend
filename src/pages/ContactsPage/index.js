@@ -11,7 +11,7 @@ const ContactsPage = () => {
 
   return (
       
-      <ContactList className="contact-list"/>
+      <ContactList />
       
   );
 };

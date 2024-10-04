@@ -1,8 +1,8 @@
 .text_field {
     margin: 24px 0;
     display: flex;
-    flex-direction: column; /* Empilha os itens verticalmente */
-    align-items: flex-start; /* Alinha os itens à esquerda */
+    flex-direction: column; 
+    align-items: flex-start; 
     justify-content: center;
 }
 

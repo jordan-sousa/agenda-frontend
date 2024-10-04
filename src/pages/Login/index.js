@@ -53,7 +53,7 @@ const Login = () => {
         
         } catch (error) {
             console.error('Erro na requisição', error);
-            setError('Erro de comunicação com o servidor'); 
+            setError('Usuário inexistente ou senha inválida'); 
         }
     }
 

@@ -1,22 +1,3 @@
-/* .contact-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .contact-item input {
-    margin-right: 10px;
-  }
-  
-  .contact-item button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-  } */
-
 .contact-item {
   display: flex;
   justify-content: space-between;
@@ -30,7 +11,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  width: 100%;
+  width: 100%; 
 }
 
 .contact-item ul li {
@@ -42,7 +23,7 @@
 }
 
 .contact-item section {
-  width: 100%;
+  width: 100%; 
 }
 
 .contact-item div {
@@ -54,54 +35,74 @@
   color: white;
   border: none;
   padding: 10px;
-  margin-right: 5px;
+  margin: 5px;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .box_edit_delet {
   display: flex;
+  justify-content: space-around;
+  gap: 10px; 
+}
+
+.box_edit_delet button{
+  width: 200px;
 }
 
 .box_edit_delet .button_delet {
-  background: rgb(125 21 49 / 81%);
-}
-
-.contact-item button:hover {
-  background-color: #45a049;
+  background: rgba(125, 21, 49, 0.81);
 }
 
 .input_edit {
-  padding: 5px;
-  border-radius: 5px;
+  padding: 8px;
   margin: 5px;
   border: none;
+  width: 90%;
 }
 
 .box_button_edit {
   display: flex;
+  gap: 10px; 
+  justify-content: space-around;
+  /* width: 200px; */
+}
+.box_button_edit button {
+  width: 200px;
 }
 
 .box_button_edit :nth-child(2) {
-  background: rgb(125 21 49 / 81%);
+  background: rgba(125, 21, 49, 0.81);
 }
 
 .list_item .list_cont {
   list-style: none;
 }
 
-@media only screen and (max-width: 600px) {
+/* Estilos para telas maiores (desktop) */
+@media (min-width: 1024px) {
   .contact-item {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: nowrap; 
   }
 
-  .contact-item ul li span {
-    font-size: 16px;
+  .contact-item ul {
+    width: auto; 
   }
 
   .contact-item button {
-    width: 100%;
-    margin-bottom: 5px;
+    padding: 12px 20px; 
+  }
+
+  .box_edit_delet {
+    display: flex;
+    gap: 15px; 
+  }
+
+  .contact-item div {
+    margin-top: 0;
+  }
+
+  .input_edit {
+    max-width: 300px; 
   }
 }
